@@ -1,0 +1,25 @@
+
+# Python environments
+.venv/
+venv/
+env/
+
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# Editors and logs
+.vscode/
+.idea/
+*.log
+
+# Downloaded model weights
+*.pt
+*.pth
+*.bin
+*.safetensors
