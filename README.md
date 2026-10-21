@@ -1,14 +1,8 @@
-
-
 \# Python Machine Learning Bootcamp
 
 
 
-A practical learning portfolio documenting my progress in Python,
-
-machine learning fundamentals, natural language processing, and
-
-semantic information retrieval.
+A hands-on learning portfolio documenting my progress in Python, machine learning, natural language processing (NLP), and semantic search.
 
 
 
@@ -16,39 +10,69 @@ semantic information retrieval.
 
 
 
-\- \*\*PyTorch:\*\* tensors, gradients, loss functions, and training fundamentals.
+\### 1. Python Numerical Computing
 
-\- \*\*NumPy and SciPy:\*\* numerical computing and statistical analysis.
+\- NumPy arrays and numerical operations
 
-\- \*\*Tokenization:\*\* preparing text for transformer models.
-
-\- \*\*Sentiment Analysis:\*\* classifying text with pretrained Hugging Face models.
-
-\- \*\*Sentence Embeddings:\*\* representing text as numerical vectors.
-
-\- \*\*Semantic Search:\*\* retrieving relevant documents using similarity scores.
-
-\- \*\*Retrieval Experiments:\*\* exploring document retrieval as a foundation
-
-&#x20; for retrieval-augmented generation (RAG).
+\- SciPy statistical analysis
 
 
 
-\## Technologies
+\### 2. PyTorch Fundamentals
+
+\- Tensor creation and operations
+
+\- Automatic differentiation and gradients
+
+\- Loss functions and basic model training concepts
+
+
+
+\### 3. Natural Language Processing
+
+\- Text tokenization using Hugging Face Transformers
+
+\- Pretrained models for sentiment analysis
+
+\- Interactive review sentiment analysis
+
+
+
+\### 4. Text Embeddings and Semantic Search
+
+\- Generating sentence embeddings with Sentence Transformers
+
+\- Comparing text similarity
+
+\- Retrieving relevant documents for a user query
+
+
+
+\### 5. Retrieval-Augmented Generation (RAG) Foundations
+
+\- Retrieving relevant documents using semantic similarity
+
+\- Preparing contextual information to support downstream question answering
+
+
+
+\## Technology Stack
 
 
 
 \- Python
 
-\- PyTorch
+\- NumPy
 
-\- NumPy and SciPy
+\- SciPy
+
+\- PyTorch
 
 \- Hugging Face Transformers
 
-\- Tokenization and sentence embeddings
+\- Sentence Transformers
 
-\- Semantic search
+\- Git and GitHub
 
 
 
@@ -56,17 +80,97 @@ semantic information retrieval.
 
 
 
-1\. Clone this repository.
-
-2\. Create and activate a Python virtual environment.
-
-3\. Install the dependencies required by the individual project.
-
-4\. Run a script from the project directory.
+\### 1. Clone the repository
 
 
 
-Dependency instructions will be documented as the projects are organized.
+```bash
+
+git clone https://github.com/iyzak/python-ml-bootcamp.git
+
+cd python-ml-bootcamp
+
+```
+
+
+
+\### 2. Create a virtual environment
+
+
+
+```bash
+
+python -m venv .venv
+
+```
+
+
+
+\### 3. Activate it on Windows
+
+
+
+```cmd
+
+.venv\\Scripts\\activate
+
+```
+
+
+
+\### 4. Install dependencies
+
+
+
+```bash
+
+python -m pip install --upgrade pip
+
+pip install -r requirements.txt
+
+```
+
+
+
+\## Running Examples
+
+
+
+Run individual scripts from the project directory. For example:
+
+
+
+```bash
+
+python lesson\_01.py
+
+python lesson\_07\_sentiment.py
+
+python lesson\_10\_semantic\_search.py
+
+python lesson\_12\_rag\_retrieval.py
+
+```
+
+
+
+Some scripts may download pretrained models on their first run and require an internet connection.
+
+
+
+\## Learning Goals
+
+
+
+\- Strengthen practical Python and machine learning skills.
+
+\- Understand the foundations of neural networks and model training.
+
+\- Build NLP applications using pretrained models.
+
+\- Improve information retrieval through embeddings and semantic search.
+
+\- Develop a portfolio of reproducible, progressively more advanced AI projects.
 
 
 
@@ -74,13 +178,5 @@ Dependency instructions will be documented as the projects are organized.
 
 
 
-This repository documents hands-on learning and experiments as I develop
-
-my machine learning and AI engineering skills. The scripts represent
-
-different stages of that learning process; not every script is a
-
-production-ready application.
-
-
+This repository is an ongoing practical learning project. It documents my development in machine learning and AI application engineering through code, experiments, and incremental improvements.
 
