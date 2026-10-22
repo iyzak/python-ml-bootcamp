@@ -1,0 +1,41 @@
+threshold,query,retrieved_ids,returned_count,relevant_found,relevant_expected
+0.3,How can I identify positive and negative reviews?,"DOC001, DOC003",2,2,3
+0.3,How do I compare text using numerical vectors?,DOC004,1,1,1
+0.3,Which framework helps train neural networks?,DOC005,1,1,1
+0.3,What tool supports numerical calculations and arrays?,DOC006,1,1,1
+0.3,What foods make up a healthy diet?,DOC007,1,1,1
+0.3,How can I determine customer sentiment from feedback?,"DOC001, DOC003, DOC002",3,1,1
+0.3,Which method represents sentences as vectors for comparison?,DOC004,1,1,1
+0.3,What library can I use to build neural networks?,DOC005,1,1,1
+0.3,How do I perform array calculations in Python?,DOC006,1,1,1
+0.3,Which foods are part of a balanced diet?,DOC007,1,1,1
+0.4,How can I identify positive and negative reviews?,"DOC001, DOC003",2,2,3
+0.4,How do I compare text using numerical vectors?,DOC004,1,1,1
+0.4,Which framework helps train neural networks?,DOC005,1,1,1
+0.4,What tool supports numerical calculations and arrays?,DOC006,1,1,1
+0.4,What foods make up a healthy diet?,DOC007,1,1,1
+0.4,How can I determine customer sentiment from feedback?,"DOC001, DOC003",2,1,1
+0.4,Which method represents sentences as vectors for comparison?,DOC004,1,1,1
+0.4,What library can I use to build neural networks?,DOC005,1,1,1
+0.4,How do I perform array calculations in Python?,DOC006,1,1,1
+0.4,Which foods are part of a balanced diet?,DOC007,1,1,1
+0.5,How can I identify positive and negative reviews?,DOC001,1,1,3
+0.5,How do I compare text using numerical vectors?,DOC004,1,1,1
+0.5,Which framework helps train neural networks?,DOC005,1,1,1
+0.5,What tool supports numerical calculations and arrays?,DOC006,1,1,1
+0.5,What foods make up a healthy diet?,DOC007,1,1,1
+0.5,How can I determine customer sentiment from feedback?,"DOC001, DOC003",2,1,1
+0.5,Which method represents sentences as vectors for comparison?,DOC004,1,1,1
+0.5,What library can I use to build neural networks?,DOC005,1,1,1
+0.5,How do I perform array calculations in Python?,DOC006,1,1,1
+0.5,Which foods are part of a balanced diet?,DOC007,1,1,1
+0.6,How can I identify positive and negative reviews?,,0,0,3
+0.6,How do I compare text using numerical vectors?,DOC004,1,1,1
+0.6,Which framework helps train neural networks?,,0,0,1
+0.6,What tool supports numerical calculations and arrays?,DOC006,1,1,1
+0.6,What foods make up a healthy diet?,DOC007,1,1,1
+0.6,How can I determine customer sentiment from feedback?,DOC001,1,1,1
+0.6,Which method represents sentences as vectors for comparison?,DOC004,1,1,1
+0.6,What library can I use to build neural networks?,,0,0,1
+0.6,How do I perform array calculations in Python?,DOC006,1,1,1
+0.6,Which foods are part of a balanced diet?,DOC007,1,1,1
