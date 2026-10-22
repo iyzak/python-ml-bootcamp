@@ -51,6 +51,7 @@ The system should rank the PyTorch document highly because it describes PyTorch 
 
 Document embeddings are calculated when the application starts and reused across subsequent searches during that run.
 
+
 ## Project Structure
 
 ```text
