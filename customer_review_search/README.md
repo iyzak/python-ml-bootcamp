@@ -1,428 +1,227 @@
-Customer Review Semantic Search
+# Customer Review Semantic Search
 
+A Python-based semantic search project that retrieves relevant documents from a small knowledge collection using pretrained sentence embeddings and cosine similarity.
 
+This project demonstrates practical machine learning engineering concepts, including text embeddings, vector similarity, ranked retrieval, automated testing, retrieval evaluation, and threshold experiments.
 
-A Python-based semantic search project that retrieves relevant documents from a small knowledge collection using sentence embeddings and cosine similarity.
+## Project Overview
 
+Traditional keyword search often depends on exact word matches. Semantic search represents text as numerical vectors to identify meaningfully related content, even when queries and documents use different wording.
 
+This project uses the `sentence-transformers/all-MiniLM-L6-v2` model to encode documents and search queries. It ranks documents by cosine similarity and returns the most relevant matches.
 
-The project demonstrates core machine learning engineering concepts, including text embeddings, vector similarity, ranked retrieval, evaluation metrics, and exporting evaluation results to CSV.
-
-
-
-Project Overview
-
-
-
-Traditional keyword search often relies on exact word matches. Semantic search uses numerical representations of text to identify passages that are meaningfully related to a query, even when the wording differs.
-
-
-
-This project uses a pretrained Sentence Transformers model to encode documents and search queries into vector representations. It then ranks documents by cosine similarity and returns the top matching results.
-
-
-
-&#x20;Example use case
-
-
-
-A user searches:
-
-
+**Example query**
 
 > Which framework helps train neural networks?
 
+The system should rank the PyTorch document highly because it describes PyTorch as a framework for building and training neural networks.
 
+## Features
 
-The system should rank the PyTorch document highly because its description explains that PyTorch is used to build and train neural networks.
+- **Semantic retrieval:** Search using natural-language queries.
+- **Pretrained sentence embeddings:** Represent documents and queries as numerical vectors.
+- **Cosine similarity:** Compare query and document embeddings.
+- **Ranked retrieval:** Return the top three matches by default.
+- **Similarity threshold:** Optionally filter out results below a chosen similarity score.
+- **Retrieval evaluation:** Calculate Precision@1, Precision@3, Recall@3, and Mean Reciprocal Rank (MRR).
+- **Threshold experiments:** Compare retrieval coverage and relevance at different thresholds.
+- **CSV reporting:** Export per-query evaluation and threshold experiment results.
+- **Automated tests:** Test retrieval behaviour, evaluation output, threshold filtering, and selected real-model integration cases.
+- **Interactive command-line interface:** Search repeatedly or run the evaluation from the terminal.
 
+## Tech Stack
 
+- Python
+- Sentence Transformers
+- PyTorch
+- NumPy and other dependencies installed by the Sentence Transformers package
+- Python standard-library modules, including `csv`, `pathlib`, and `unittest`
+- Git and GitHub
 
-Features
+## How It Works
 
+1. **Load the model:** Initialize the pretrained sentence embedding model.
+2. **Encode documents:** Convert each document into a numerical vector.
+3. **Encode the query:** Convert the user's query into a vector using the same model.
+4. **Calculate similarity:** Compare the query embedding with document embeddings using cosine similarity.
+5. **Rank results:** Sort documents by similarity and return the top matches.
+6. **Apply an optional threshold:** Exclude results whose similarity scores fall below the configured minimum.
+7. **Evaluate retrieval:** Compare retrieved document IDs against manually assigned relevance labels.
+8. **Export results:** Save evaluation metrics and retrieved IDs to CSV files.
 
+Document embeddings are calculated when the application starts and reused across subsequent searches during that run.
 
-\- Semantic retrieval: Search using natural-language queries.
-
-\- Pretrained sentence embeddings: Encode documents and queries using `all-MiniLM-L6-v2`.
-
-\- Cosine similarity: Compare query and document embeddings.
-
-\- Ranked results: Return the top three matching documents by default.
-
-\- Retrieval evaluation: Measure Precision@1, Precision@3, Recall@3, and Reciprocal Rank.
-
-\- Aggregate metrics: Calculate mean scores across five evaluation queries.
-
-\- CSV export: Save per-query evaluation results to `evaluation\_results.csv`.
-
-\- Interactive command-line interface:\*\* Search repeatedly or run the evaluation from the terminal.
-
-
-
-&#x20;Tech Stack
-
-
-
-\- Python
-
-\- Sentence Transformers
-
-\- PyTorch (used by the embedding model)
-
-\- CSV module from the Python standard library
-
-\- Git and GitHub
-
-
-
-&#x20;How It Works
-
-
-
-1\. Load the model:Initialize the pretrained `sentence-transformers/all-MiniLM-L6-v2` model.
-
-2\. Encode documents: Convert each document into a numerical vector.
-
-3\. Encode the query: Convert the user's search query into a vector using the same model.
-
-4\. Calculate similarity: Compare the query vector with document vectors using cosine similarity.
-
-5\. Rank results: Sort documents by similarity and return the top results.
-
-6\. Evaluate retrieval: Compare retrieved document IDs against manually assigned relevance labels.
-
-7\. Export results: Write individual query metrics and retrieved IDs to a CSV file.
-
-
-
-Document embeddings are calculated once when the application starts, rather than being recalculated for every search query.
-
-
-
-&#x20;Project Structure
-
-
+## Project Structure
 
 ```text
-
-customer\_review\_search/
-
-├── semantic\_search.py
-
+customer_review_search/
 ├── README.md
-
-└── evaluation\_results.csv
-
+├── requirements.txt
+├── semantic_search.py
+├── test_semantic_search.py
+├── threshold_experiment.py
+├── evaluation_results.csv
+└── threshold_results.csv
 ```
 
+The CSV files are generated by the evaluation scripts. They may not exist in a fresh checkout until the corresponding commands have been run.
 
+The project can use the root-level `requirements.txt` and virtual environment from the parent `python-ml-bootcamp` repository.
 
-`evaluation\_results.csv` is generated when the evaluation is run. It may not exist in a fresh checkout until the evaluation command has been executed.
+## Getting Started
 
+### Prerequisites
 
+- Python
+- Git
+- Internet access to download the pretrained model on its first run
 
-The project also uses the root-level `requirements.txt` and virtual environment from the parent `python-ml-bootcamp` repository.
-
-&#x20;Getting Started
-
-
-
-&#x20;Prerequisites
-
-
-
-\- Python installed on your computer
-
-\- Git
-
-\- Internet access for downloading the pretrained model on its first run
-
-
-
-&#x20;1. Clone the repository
-
-
+### 1. Clone the repository
 
 ```cmd
-
 git clone https://github.com/iyzak/python-ml-bootcamp.git
-
 cd python-ml-bootcamp
-
 ```
 
+### 2. Create and activate a virtual environment
 
-
-If you already cloned the repository, navigate to your existing local folder instead.
-
-
-
-2\. Create and activate a virtual environment
-
-
-
-If you already have the bootcamp virtual environment, activate it:
-
-
+If you do not already have one:
 
 ```cmd
-
-.venv\\Scripts\\activate
-
-```
-
-
-
-If you do not have one yet, create it first:
-
-
-
-```cmd
-
 python -m venv .venv
-
-.venv\\Scripts\\activate
-
+.venv\Scripts\activate
 ```
 
+If you already have the bootcamp virtual environment, activate it instead.
 
+### 3. Install dependencies
 
-&#x20;3. Install dependencies
-
-
-
-From the repository root, run:
-
-
+From the repository root:
 
 ```cmd
-
 python -m pip install -r requirements.txt
-
 ```
 
-
-
-&#x20;4. Navigate to the project
-
-
+### 4. Navigate to the project
 
 ```cmd
-
-cd customer\_review\_search
-
+cd customer_review_search
 ```
 
-
-
-5\. Start semantic search
-
-
+### 5. Run semantic search
 
 ```cmd
-
-python semantic\_search.py
-
+python semantic_search.py
 ```
-
-
 
 Enter a natural-language query at the prompt. Type `quit` to exit.
 
-
-
 Example queries:
 
+- `How can I identify positive and negative reviews?`
+- `How do I compare text using numerical vectors?`
+- `Which framework helps train neural networks?`
+- `What tool supports numerical calculations and arrays?`
+- `What foods make up a healthy diet?`
 
+To use the built-in evaluation, enter `eval` at the interactive prompt.
 
-\- `How can I identify positive and negative reviews?`
+### 6. Run automated tests
 
-\- `How do I compare text using numerical vectors?`
+From the `customer_review_search` directory:
 
-\- `Which framework helps train neural networks?`
-
-\- `What tool supports numerical calculations and arrays?`
-
-\- `What foods make up a healthy diet?`
-
-
-
-6\. Run the evaluation
-
-
-
-Start the program and enter:
-
-
-
-```text
-
-eval
-
+```cmd
+python -m unittest -v test_semantic_search.py
 ```
 
+The current test suite contains 13 tests, including unit tests using a deterministic fake embedding model and integration tests using the real sentence embedding model.
 
+### 7. Run the threshold experiment
 
-The program prints the per-query retrieval metrics and overall averages. It also generates `evaluation\_results.csv` in the project directory.
+From the same directory:
 
+```cmd
+python threshold_experiment.py
+```
 
+The experiment compares similarity thresholds of 0.30, 0.40, 0.50, and 0.60. It writes the per-query results to `threshold_results.csv`.
 
-&#x20;Evaluation
+## Baseline Retrieval Evaluation
 
-
-
-The current evaluation uses five test queries and manually assigned relevant document IDs.
-
-
+The baseline evaluation uses ten predefined queries and manually assigned relevance labels.
 
 | Metric | Mean score | Interpretation |
-
 |---|---:|---|
+| Precision@1 | 1.00 | The top-ranked result was labelled relevant for all ten queries. |
+| Precision@3 | 0.40 | An average of 40% of the top-three result slots were labelled relevant. |
+| Recall@3 | 1.00 | All labelled relevant documents were retrieved within the top three for each query. |
+| Mean Reciprocal Rank (MRR) | 1.00 | The first relevant result ranked first for every query. |
 
-| Precision@1 | 1.00 | The first result was relevant for all five test queries. |
+These scores describe the current small dataset and its relevance labels. They do not establish production-level retrieval performance.
 
-| Precision@3 | 0.47 | About 47% of the retrieved top-three results were labelled relevant, averaged across queries. |
+### Metric definitions
 
-| Recall@3 | 1.00 | All documents labelled relevant for each test query appeared in its top three results. |
+- **Precision@1:** Whether the highest-ranked result is relevant.
+- **Precision@3:** The proportion of the top three result slots that contain relevant documents, averaged across queries.
+- **Recall@3:** The proportion of labelled relevant documents retrieved within the top three.
+- **MRR:** The average reciprocal rank of the first relevant result.
 
-| Mean Reciprocal Rank (MRR) | 1.00 | The first relevant result ranked first for every test query. |
+## Similarity Threshold Experiment
 
+A similarity threshold can filter weak matches. However, increasing the threshold can also remove relevant results.
 
+The following results summarize the experiment across ten queries:
 
-Scores are based on the current small document collection and its manually assigned relevance labels. They are an initial experiment, not evidence of production-level retrieval performance.
+| Threshold | Average results returned | Pooled precision | Overall recall | Queries with no results |
+|---:|---:|---:|---:|---:|
+| 0.30 | 1.30 | 84.62% | 91.67% | 0 |
+| 0.40 | 1.20 | 91.67% | 91.67% | 0 |
+| 0.50 | 1.10 | 90.91% | 83.33% | 0 |
+| 0.60 | 0.70 | 100.00% | 58.33% | 3 |
 
+**Initial observation:** A threshold of 0.40 is a promising provisional choice for this dataset. Compared with 0.30, it returns fewer documents while maintaining the same overall recall and improving pooled precision.
 
+At 0.60, precision reaches 100% among the returned results, but recall falls substantially and three queries return nothing. This illustrates why precision alone is not enough to assess a retrieval system.
 
-Metric definitions
+These findings are preliminary. The dataset is small, relevance labels are manually assigned, and results may change with a larger or more diverse query set.
 
+## Current Limitations
 
+- The document collection contains only seven manually written documents.
+- Evaluation uses ten predefined queries.
+- Relevance labels are manually assigned and may not represent every user's search intent.
+- The evaluation dataset is too small to support broad performance claims.
+- Similarity scores are not calibrated probabilities of relevance.
+- The application searches in-memory documents and does not use a vector database.
+- Threshold values are experimental and may not generalize to other datasets.
 
-\- \*\*Precision@1:\*\* Whether the highest-ranked result is relevant.
+## Future Improvements
 
-\- \*\*Precision@3:\*\* The fraction of the top three retrieved documents that are relevant.
+- Expand the document collection and evaluation queries.
+- Add more diverse relevance judgements and test cases.
+- Compare embedding models using the same evaluation dataset.
+- Experiment with larger datasets and more systematic threshold selection.
+- Support loading documents from CSV files.
+- Explore a vector database for larger collections.
+- Build an API or web interface for interactive search.
 
-\- \*\*Recall@3:\*\* The fraction of all labelled relevant documents retrieved within the top three.
-
-\- \*\*MRR:\*\* The average reciprocal rank of the first relevant result.
-
-
-
-Example Output
-
-
-
-```text
-
-Customer Review Semantic Search
-
-Type 'eval' to evaluate retrieval.
-
-Type 'quit' to exit.
-
-
-
-Enter a search query: Which framework helps train neural networks?
-
-
-
-Most relevant documents:
-
-
-
-ID: DOC005
-
-Title: PyTorch
-
-Similarity: <score depends on the model output>
-
-Text: PyTorch is a machine learning framework used to build and train neural networks.
-
-```
-
-
-
-The example illustrates the expected result structure. The displayed similarity score is intentionally not fixed because the program calculates it at runtime.
-
-
-
-Current Limitations
-
-
-
-\- The document collection contains only seven manually written documents.
-
-\- Evaluation uses five predefined test queries.
-
-\- Relevance labels are manually assigned and may not reflect every user's search intent.
-
-\- The system always returns up to three results, even when some matches are weak.
-
-\- Similarity scores are not calibrated probabilities of relevance.
-
-\- The current application searches in-memory documents and does not use a vector database.
-
-\- The evaluation results should not be generalized to larger or real-world datasets without additional testing.
-
-
-
-Future Improvements
-
-
-
-\- Expand the test dataset with realistic customer-review queries.
-
-\- Add more diverse documents and relevance judgements.
-
-\- Experiment with similarity thresholds to filter weak matches.
-
-\- Compare embedding models using the same evaluation dataset.
-
-\- Add automated tests and input validation.
-
-\- Support loading documents from CSV files.
-
-\- Explore a vector database for larger collections.
-
-\- Build an API or web interface for interactive search.
-
-
-
-&#x20;Learning Outcomes
-
-
+## Learning Outcomes
 
 This project provides hands-on practice with:
 
+- Text embeddings and vector representations
+- Semantic similarity and ranked retrieval
+- Reusing pretrained machine learning models
+- Retrieval evaluation and relevance labels
+- Automated unit and integration testing
+- Threshold experiments and precision–recall trade-offs
+- CSV reporting and reproducible experiments
+- Python project organization and Git-based version control
 
+## Author
 
-\- Text embeddings and vector representations
+**Isaac Munene**
 
-\- Semantic similarity and ranked retrieval
+GitHub: https://github.com/iyzak
 
-\- Reusing pretrained machine learning models
-
-\- Retrieval evaluation and relevance labels
-
-\- CSV reporting and reproducible experiments
-
-\- Python project organization and Git-based version control
-
-
-
-Author
-
-
-
-Isaac Munene
-
-
-
-GitHub: \[@iyzak](https://github.com/iyzak)
-
-
-
-This project is part of my hands-on Python and machine learning learning journey.
-
-
-
+This project is part of my hands-on Python and machine learning portfolio.
